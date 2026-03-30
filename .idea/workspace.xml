@@ -5,176 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8c918f87-3e9a-498a-9cfd-ccc36e6a542d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/app.controller.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/app.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/app.controller.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/app.module.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/app.module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/app.module.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/app.service.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/app.service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/app.service.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/auth/auth.controller.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/auth/auth.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/auth/auth.controller.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/auth/auth.module.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/auth/auth.module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/auth/auth.module.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/auth/auth.service.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/auth/auth.service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/auth/auth.service.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/auth/dto/login.dto.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/auth/dto/login.dto.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/auth/dto/login.dto.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/auth/dto/signup.dto.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/auth/dto/signup.dto.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/auth/dto/signup.dto.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/auth/strategies/google.strategy.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/auth/strategies/google.strategy.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/auth/strategies/google.strategy.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/auth/strategies/jwt.strategy.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/auth/strategies/jwt.strategy.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/auth/strategies/jwt.strategy.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/common/decorators/current-user.decorator.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/common/decorators/current-user.decorator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/common/decorators/current-user.decorator.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/common/decorators/permissions.decorator.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/common/decorators/permissions.decorator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/common/decorators/permissions.decorator.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/common/decorators/roles.decorator.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/common/decorators/roles.decorator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/common/decorators/roles.decorator.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/common/guards/jwt-auth.guard.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/common/guards/jwt-auth.guard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/common/guards/jwt-auth.guard.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/common/guards/permissions.guard.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/common/guards/permissions.guard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/common/guards/permissions.guard.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/common/guards/roles.guard.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/common/guards/roles.guard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/common/guards/roles.guard.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/database/data-source.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/database/data-source.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/database/data-source.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/database/migrations/1774690643926-InitialSync.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/database/migrations/1774690643926-InitialSync.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/database/migrations/1774690643926-InitialSync.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/database/seeder.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/database/seeder.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/database/seeder.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/main.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/main.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/permissions/entities/permission.entity.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/permissions/entities/permission.entity.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/permissions/entities/permission.entity.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/permissions/permissions.module.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/permissions/permissions.module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/permissions/permissions.module.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/roles/entities/role.entity.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/roles/entities/role.entity.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/roles/entities/role.entity.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/roles/roles.controller.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/roles/roles.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/roles/roles.controller.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/roles/roles.module.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/roles/roles.module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/roles/roles.module.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/roles/roles.service.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/roles/roles.service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/roles/roles.service.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/task-levels/entities/task-level.entity.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/task-levels/entities/task-level.entity.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/task-levels/entities/task-level.entity.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/task-levels/task-levels.controller.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/task-levels/task-levels.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/task-levels/task-levels.controller.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/task-levels/task-levels.module.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/task-levels/task-levels.module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/task-levels/task-levels.module.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/task-levels/task-levels.service.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/task-levels/task-levels.service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/task-levels/task-levels.service.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/tasks/dto/create-task.dto.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/tasks/dto/create-task.dto.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/tasks/dto/create-task.dto.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/tasks/entities/task.entity.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/tasks/entities/task.entity.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/tasks/entities/task.entity.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/tasks/tasks.controller.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/tasks/tasks.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/tasks/tasks.controller.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/tasks/tasks.module.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/tasks/tasks.module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/tasks/tasks.module.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/tasks/tasks.service.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/tasks/tasks.service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/tasks/tasks.service.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/tsconfig.build.tsbuildinfo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/users/entities/user.entity.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/users/entities/user.entity.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/users/entities/user.entity.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/users/users.controller.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/users/users.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/users/users.controller.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/users/users.module.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/users/users.module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/users/users.module.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/users/users.service.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/users/users.service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/dist/users/users.service.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/eslint.config.mjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/nest-cli.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/app.controller.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/app.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/app.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/app.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/auth/auth.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/auth/auth.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/auth/auth.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/auth/dto/login.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/auth/dto/signup.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/auth/strategies/google.strategy.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/auth/strategies/jwt.strategy.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/common/decorators/current-user.decorator.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/common/decorators/permissions.decorator.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/common/decorators/roles.decorator.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/common/guards/jwt-auth.guard.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/common/guards/permissions.guard.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/common/guards/roles.guard.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/database/data-source.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/database/migrations/1774690643926-InitialSync.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/database/seeder.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/permissions/entities/permission.entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/permissions/permissions.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/roles/entities/role.entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/roles/roles.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/roles/roles.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/roles/roles.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/task-levels/entities/task-level.entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/task-levels/task-levels.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/task-levels/task-levels.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/task-levels/task-levels.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/tasks/dto/create-task.dto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/tasks/entities/task.entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/tasks/tasks.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/tasks/tasks.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/tasks/tasks.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/users/entities/user.entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/users/users.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/users/users.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/src/users/users.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/test/app.e2e-spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/test/jest-e2e.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/tsconfig.build.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/backend/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Desktop/NestJs/task-mangement/frontend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/Desktop/NestJs/task-mangement/frontend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/task-levels/entities/task-level.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/task-levels/entities/task-level.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/tasks/dto/create-task.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/tasks/dto/create-task.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/tasks/entities/task.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/tasks/entities/task.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/tasks/tasks.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/tasks/tasks.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/tasks/tasks.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/tasks/tasks.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,11 +63,23 @@
       <updated>1774691382604</updated>
       <workItem from="1774691383718" duration="9526000" />
       <workItem from="1774753924638" duration="3603000" />
-      <workItem from="1774844817555" duration="3551000" />
+      <workItem from="1774844817555" duration="9586000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/backend/src/main.ts</url>
+          <line>67</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

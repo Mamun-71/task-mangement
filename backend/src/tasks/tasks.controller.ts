@@ -1,6 +1,6 @@
-import { Controller, Get, Post, Body, Param, Patch, Delete, UseGuards, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Patch, Delete, UseGuards, ParseIntPipe, Query } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiBearerAuth, ApiQuery } from '@nestjs/swagger';
-import { TasksService } from './tasks.service';
+import { TasksService, TaskFilters } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
 import { CurrentUser } from '../common/decorators/current-user.decorator';
@@ -21,9 +21,35 @@ export class TasksController {
 
   @Get()
   @ApiOperation({ summary: 'Get all tasks for current user (Admins get all)' })
-  findAll(@CurrentUser() user) {
+  @ApiQuery({ name: 'startDate', required: false })
+  @ApiQuery({ name: 'endDate', required: false })
+  @ApiQuery({ name: 'taskLevelId', required: false })
+  @ApiQuery({ name: 'status', required: false })
+  findAll(
+    @CurrentUser() user,
+    @Query('startDate') startDate?: string,
+    @Query('endDate') endDate?: string,
+    @Query('taskLevelId') taskLevelId?: string,
+    @Query('status') status?: TaskStatus,
+  ) {
     const isAdmin = user.roles?.some(role => role.name === 'ADMIN');
-    return this.tasksService.findAll(user.id, isAdmin);
+    const filters: TaskFilters = {
+      startDate,
+      endDate,
+      taskLevelId: taskLevelId ? parseInt(taskLevelId) : undefined,
+      status,
+    };
+    return this.tasksService.findAll(user.id, isAdmin, filters);
+  }
+
+  @Get('analytics/:period')
+  @ApiOperation({ summary: 'Get task analytics (weekly or monthly)' })
+  getAnalytics(
+    @Param('period') period: 'weekly' | 'monthly',
+    @CurrentUser() user
+  ) {
+    const isAdmin = user.roles?.some(role => role.name === 'ADMIN');
+    return this.tasksService.getAnalytics(user.id, isAdmin, period);
   }
 
   @Get(':id')

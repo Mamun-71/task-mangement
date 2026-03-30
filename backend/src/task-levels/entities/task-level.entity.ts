@@ -9,6 +9,9 @@ export class TaskLevel {
   @Column({ unique: true })
   title: string;
 
+  @Column({ type: 'decimal', precision: 5, scale: 2, default: 1.0 })
+  timeMultiplier: number;
+
   @OneToMany(() => Task, task => task.taskLevel)
   tasks: Task[];
 }

@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, AfterLoad } from 'typeorm';
 import { User } from '../../users/entities/user.entity';
 import { TaskLevel } from '../../task-levels/entities/task-level.entity';
 
@@ -26,7 +26,7 @@ export class Task {
   @Column({ name: 'task_level_id' })
   taskLevelId: number;
 
-  @ManyToOne(() => TaskLevel, taskLevel => taskLevel.tasks, { onDelete: 'SET NULL' })
+  @ManyToOne(() => TaskLevel, taskLevel => taskLevel.tasks, { eager: true, onDelete: 'SET NULL' })
   @JoinColumn({ name: 'task_level_id' })
   taskLevel: TaskLevel;
 
@@ -41,4 +41,41 @@ export class Task {
 
   @Column({ name: 'end_time', type: 'time' })
   endTime: string;
+
+  @Column({ name: 'elapsed_minutes', type: 'int', nullable: true })
+  elapsedMinutes: number;
+
+  @Column({ name: 'adjusted_minutes', type: 'int', nullable: true })
+  adjustedMinutes: number;
+
+  private parseTime(timeStr: string): number {
+    const [hours, minutes] = timeStr.split(':').map(Number);
+    return hours * 60 + minutes;
+  }
+
+  @AfterLoad()
+  calculateElapsedTime() {
+    if (this.startTime && this.endTime) {
+      const startMinutes = this.parseTime(this.startTime);
+      const endMinutes = this.parseTime(this.endTime);
+      this.elapsedMinutes = Math.max(0, endMinutes - startMinutes);
+      
+      const multiplier = this.taskLevel?.timeMultiplier || 1;
+      this.adjustedMinutes = Math.round(this.elapsedMinutes * multiplier);
+    }
+  }
+
+  get formattedElapsedTime(): string {
+    if (!this.elapsedMinutes) return '00:00';
+    const hours = Math.floor(this.elapsedMinutes / 60);
+    const minutes = this.elapsedMinutes % 60;
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+  }
+
+  get formattedAdjustedTime(): string {
+    if (!this.adjustedMinutes) return '00:00';
+    const hours = Math.floor(this.adjustedMinutes / 60);
+    const minutes = this.adjustedMinutes % 60;
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+  }
 }
