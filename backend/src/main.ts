@@ -5,30 +5,67 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  
-  // Enable CORS
-  app.enableCors();
 
-  // Global Pipes
+  // ✅ Allowed origins
+  const allowedOrigins = [
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'http://localhost:3002',
+    'http://localhost:3003',
+    'http://127.0.0.1:3000',
+    'http://127.0.0.1:3001',
+    'http://127.0.0.1:3002',
+    'http://127.0.0.1:3003',
+  ];
+
+  // ✅ Proper CORS config (NO manual middleware)
+  app.enableCors({
+    origin: (origin, callback) => {
+      // allow requests with no origin (Postman, mobile apps)
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error(`CORS blocked for origin: ${origin}`), false);
+      }
+    },
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    credentials: true,
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization',
+      'X-Requested-With',
+      'Accept',
+      'Origin',
+    ],
+    exposedHeaders: ['Content-Range', 'X-Content-Range'],
+    maxAge: 86400,
+  });
+
+  // ✅ Global validation
   app.useGlobalPipes(
-    new ValidationPipe({
-      whitelist: true,
-      transform: true,
-      forbidNonWhitelisted: true,
-    }),
+      new ValidationPipe({
+        whitelist: true,
+        transform: true,
+        forbidNonWhitelisted: true,
+      }),
   );
 
-  // Swagger Configuration
+  // ✅ Swagger setup
   const config = new DocumentBuilder()
-    .setTitle('Task Management API')
-    .setDescription('The Task Management System API documentation')
-    .setVersion('1.0')
-    .addBearerAuth()
-    .build();
-  
+      .setTitle('Task Management API')
+      .setDescription('The Task Management System API documentation')
+      .setVersion('1.0')
+      .addBearerAuth()
+      .build();
+
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, document);
 
-  await app.listen(process.env.PORT ?? 3000);
+  // ✅ Start server
+  const port = process.env.PORT ?? 3003;
+  await app.listen(port);
+
+  console.log(`🚀 Application running on: ${await app.getUrl()}`);
 }
+
 bootstrap();
