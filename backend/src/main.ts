@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import { CustomExceptionFilter } from './exception/custom-exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -49,6 +50,9 @@ async function bootstrap() {
         forbidNonWhitelisted: true,
       }),
   );
+
+  // ✅ Global Error Handling (from bdlaws architectural pattern)
+  app.useGlobalFilters(new CustomExceptionFilter());
 
   // ✅ Swagger setup
   const config = new DocumentBuilder()

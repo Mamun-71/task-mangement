@@ -2,8 +2,8 @@ import { Controller, Get, Post, Body, Param, Patch, Delete, UseGuards, ParseIntP
 import { ApiTags, ApiOperation, ApiBearerAuth, ApiQuery } from '@nestjs/swagger';
 import { TasksService, TaskFilters } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
-import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
-import { CurrentUser } from '../common/decorators/current-user.decorator';
+import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
+import { CurrentUser } from '../../common/decorators/current-user.decorator';
 import { TaskStatus } from './entities/task.entity';
 
 @ApiTags('Tasks')

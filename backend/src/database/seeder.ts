@@ -1,8 +1,8 @@
 import { AppDataSource } from './data-source';
-import { Role } from '../roles/entities/role.entity';
-import { Permission } from '../permissions/entities/permission.entity';
-import { User, AuthProvider } from '../users/entities/user.entity';
-import { TaskLevel } from '../task-levels/entities/task-level.entity';
+import { Role } from '../modules/roles/entities/role.entity';
+import { Permission } from '../modules/permissions/entities/permission.entity';
+import { User, AuthProvider } from '../modules/users/entities/user.entity';
+import { TaskLevel } from '../modules/task-levels/entities/task-level.entity';
 import * as bcrypt from 'bcryptjs';
 
 async function seed() {
