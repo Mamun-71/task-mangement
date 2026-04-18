@@ -1,51 +1,218 @@
-# Task Management System
+# Task Management System — Architecture Guide
 
-This project is a comprehensive Task Management System built with a scalable **NestJS** backend (using MySQL and TypeORM) and a modern **Next.js** frontend. This application implements the "bdlaws" architectural pattern but substitutes MongoDB for a relational SQL structure using TypeORM.
+A production-ready fullstack application:
 
-## Project Structure and Architecture Overview
-
-The system is separated into two primary directories: `backend/` and `frontend/`.
-
-### ⚡ Backend (NestJS + TypeORM + MySQL)
-The backend follows a highly modular, domain-driven design structure.
-
-**Key Architecture Concepts:**
-- **Modules (`src/modules`):** Feature isolation. Instead of sprawling routes, each domain (e.g., Users, Roles, Tasks) is encapsulated in its own directory containing controllers, services, entities, and data transfer objects (DTOs).
-- **Global Error Handling (`src/exception`):** A custom HTTP exception filter catches all application and database errors (including TypeORM duplicates or EntityNotFound exceptions) and structures them uniformly before returning them to the user.
-- **RBAC (Role-Based Access Control):** Utilizing `AuthenticationGuard` and custom route decorators, endpoints verify deeply nested permissions associated with incoming JWT models.
-- **Common (`src/common`):** Contains globally accessible utility functions, decorators, shared DTOs, configurations, and guards.
-- **Auto Data-Migration:** TypeORM configurations can automatically sync entity structures directly back to the database as long as `synchronize` is set, but this project employs `migrations` defined in `package.json` to generate, run, and reverse tracked database modifications securely.
-
-#### Running the Backend
-1. **Prerequisites:** Ensure you have a running MySQL database.
-2. **Access Backend Directory:** `cd backend`
-3. **Install Dependencies:** `yarn install` or `npm install`
-4. **Environment Setup:** Make sure your database is running on `127.0.0.1:3306` with username `root`. You can configure the `data-source.ts` to attach a password if needed.
-5. **Database Migration:** Run `yarn run migration:run` to inject the tables.
-6. **Database Seeding (Optional):** Run `yarn run seed` to populate initial roles, admin context, and data.
-7. **Development Server:** Run `yarn run start:dev` or `npm run start:dev` to start the backend. Swagger docs are at `/api/docs`.
-
-### 🎨 Frontend (Next.js App Router)
-The frontend uses Next.js app directory principles unified around the architecture defined by your other applications.
-
-**Key Architecture Concepts:**
-- **App Router (`src/app`):** Represents routing strictly defined through directory paths.
-- **Components (`src/components`):** Reusable atomic design elements (e.g. customized buttons, inputs, dialogs).
-- **Modules (`src/modules`):** Larger business-logic groupings (such as a full feature page container like TaskBoard or UserProfile). This promotes reusability across a monorepo setup if expanded.
-- **Services (`src/services`):** External data fetching logic (Axios or Fetch wrappers). By separating HTTP requests here, UI components remain clean.
-- **Hooks (`src/hooks`):** Common React logic to handle abstractions like localized state, debouncing, or customized contexts.
-- **Store (`src/store`):** Handles global client-side state managers like Zustand.
-- **Commons (`src/@commons`):** Shared type interfaces and constants.
-
-#### Running the Frontend
-1. **Access Frontend Directory:** `cd frontend`
-2. **Install Dependencies:** `npm install` or `yarn install`
-3. **Environment Setup:** Configure anything targeting `localhost:3003`.
-4. **Development Server:** Run `npm run dev` to start the frontend on port 3000.
+| Layer | Technology |
+|-------|-----------|
+| Backend | NestJS 11, TypeORM, MySQL |
+| Frontend | Next.js 16 (App Router), TypeScript, Tailwind CSS |
+| Auth | JWT (access + refresh), Google OAuth2, RBAC |
+| Docs | Swagger (backend), this file (architecture) |
 
 ---
-### 📖 Learning Guide & Design Patterns Used
-1. **Module Pattern:** We logically group logic, data layers, and interaction points. It keeps software boundaries clean (NestJS heavily leans on this).
-2. **Repository Pattern:** Database interaction goes exclusively through repositories, ensuring business logic isn't tightly coupled to MySQL syntax.
-3. **Guard/Interceptor/Filter Pattern:** Incoming metadata is intercepted universally rather than writing inline checks in every controller path. Standardizing JSON outputs heavily uses the Exception Filter!
-4. **Decoupled Frontend:** Presentational Components (UI only) exist separate from Smart Components (Modules) which interact with Services (Data Layer).
+
+## Repository Layout
+
+```
+task-management/
+├── backend/     # NestJS REST API  →  see backend/README.md
+└── frontend/    # Next.js UI       →  see frontend/README.md
+```
+
+---
+
+## Quick Start
+
+```bash
+# Terminal 1 — Backend
+cd backend
+cp .env.example .env        # fill in your values
+npm install
+mysql -u root -e "CREATE DATABASE task_management;"
+npm run migration:run
+npm run seed
+npm run start:dev           # http://localhost:3003
+
+# Terminal 2 — Frontend
+cd frontend
+cp .env.local.example .env.local
+npm install
+npm run dev                 # http://localhost:3000
+```
+
+---
+
+## Full Architecture
+
+```
+Browser
+   |
+   |  HTTPS
+   v
++──────────────────────────────────────────────────────────+
+|                  Next.js Frontend  :3000                  |
+|                                                           |
+|  app/(authenticated)/   ← protected route group          |
+|    layout.tsx           ← single auth gate               |
+|    dashboard/page.tsx                                     |
+|    tasks/page.tsx                                         |
+|    users/page.tsx                                         |
+|                                                           |
+|  lib/axios.ts           ← configured Axios instance      |
+|    request interceptor  ← attaches access_token          |
+|    response interceptor ← silent refresh on 401          |
+|                                                           |
+|  lib/api-services.ts    ← typed wrappers per feature     |
+|  store/useAuthStore.ts  ← Zustand global auth state      |
++──────────────────┬───────────────────────────────────────+
+                   |
+                   |  REST (JSON) + Bearer token
+                   |
++──────────────────v───────────────────────────────────────+
+|                  NestJS Backend  :3003                    |
+|                                                           |
+|  main.ts                                                  |
+|    ValidationPipe        ← reject invalid DTOs           |
+|    TransformInterceptor  ← wrap success responses        |
+|    CustomExceptionFilter ← wrap error responses          |
+|    Swagger               ← /api/docs                     |
+|                                                           |
+|  modules/                                                 |
+|    auth/       ← login, signup, refresh, logout, Google  |
+|    users/      ← user CRUD + role assignment             |
+|    roles/      ← role management                         |
+|    permissions/← permission management                   |
+|    tasks/      ← task CRUD + analytics                   |
+|    task-levels/← task level CRUD                         |
+|                                                           |
+|  common/guards/                                           |
+|    JwtAuthGuard      ← validates access token            |
+|    RolesGuard        ← checks @Roles() metadata          |
+|    PermissionsGuard  ← checks @Permissions() metadata    |
++──────────────────┬───────────────────────────────────────+
+                   |
+                   |  TypeORM
+                   v
++──────────────────────────────────────────────────────────+
+|                  MySQL Database                           |
+|                                                           |
+|  users          roles          permissions                |
+|  user_roles     role_permissions                          |
+|  tasks          task_levels                               |
++──────────────────────────────────────────────────────────+
+```
+
+---
+
+## Authentication & Security Architecture
+
+```
+  SIGN UP / LOGIN
+  ───────────────
+  Client  ──POST /auth/login──►  AuthService
+                                   validates credentials
+                                   ◄── access_token (15m, JWT_SECRET)
+                                   ◄── refresh_token (7d, JWT_REFRESH_SECRET)
+
+  AUTHENTICATED REQUEST
+  ─────────────────────
+  Client  ──GET /tasks──►  JwtAuthGuard
+  Authorization: Bearer      validates signature with JWT_SECRET
+  <access_token>             loads user + roles + permissions from DB
+                         ──► TasksController ──► TasksService ──► DB
+
+  SILENT REFRESH (automatic, done by axios interceptor)
+  ──────────────────────────────────────────────────────
+  access_token expires (401)
+  axios interceptor  ──POST /auth/refresh──►  JwtRefreshStrategy
+  Authorization: Bearer                         validates with JWT_REFRESH_SECRET
+  <refresh_token>                               compares against DB stored value
+                                           ◄── new access_token + refresh_token
+  retry original request automatically
+
+  LOGOUT
+  ──────
+  Client  ──POST /auth/logout──►  AuthService
+                                   sets user.refreshToken = null in DB
+                                   (old refresh token is now invalid)
+```
+
+---
+
+## RBAC Data Model
+
+```
+users (id, name, email, provider, ...)
+  |
+  +-- user_roles (user_id, role_id)
+       |
+       +-- roles (id, name)
+              |
+              +-- role_permissions (role_id, permission_id)
+                   |
+                   +-- permissions (id, name)
+
+Example:
+  User "Alice"
+    roles: [ADMIN]
+      permissions: [CREATE_TASK, READ_TASK, UPDATE_TASK, DELETE_TASK]
+
+  User "Bob"
+    roles: [USER]
+      permissions: [CREATE_TASK, READ_TASK, UPDATE_TASK]
+```
+
+---
+
+## API Response Envelope
+
+Every response from the backend has a consistent shape:
+
+**Success:**
+```json
+{
+  "success": true,
+  "status_code": 200,
+  "message": "Request successful",
+  "data": { "..." },
+  "timestamp": "2026-04-18T10:00:00.000Z"
+}
+```
+
+**Error:**
+```json
+{
+  "success": false,
+  "status_code": 401,
+  "message": "Invalid credentials",
+  "code": "UnauthorizedException",
+  "timestamp": "2026-04-18T10:00:00.000Z",
+  "path": "/auth/login",
+  "method": "POST"
+}
+```
+
+---
+
+## Key Design Decisions
+
+| Decision | Reason |
+|----------|--------|
+| Separate JWT_SECRET and JWT_REFRESH_SECRET | Prevents refresh tokens from being used as access tokens |
+| `synchronize: false` in TypeORM | Migrations give full control; `synchronize: true` can silently drop columns in production |
+| Route group `(authenticated)` in Next.js | Single layout file protects all pages — no per-page auth checks |
+| Axios interceptor for silent refresh | Components never need to handle 401 — the token refresh is transparent |
+| `select: false` on password and refreshToken columns | These fields are never accidentally returned in API responses |
+| `whitelist: true` in ValidationPipe | Strips fields not declared in DTOs — prevents mass-assignment attacks |
+| Global TransformInterceptor | Frontend always knows the response shape — no defensive checks per request |
+
+---
+
+## Adding a New Domain Feature
+
+1. **Backend:** `nest g module modules/feature` → entity → DTO → service → controller → migration
+2. **Frontend:** `src/app/(authenticated)/feature/page.tsx` → add to `api-services.ts`
+
+See detailed steps in:
+- [backend/README.md](./backend/README.md#10-extending)
+- [frontend/README.md](./frontend/README.md#9-extending)

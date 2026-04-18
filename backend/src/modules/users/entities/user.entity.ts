@@ -33,6 +33,10 @@ export class User {
   @Column({ name: 'profile_picture', nullable: true })
   profilePicture?: string;
 
+  // Stored plain; null when the user has logged out.
+  @Column({ name: 'refresh_token', type: 'text', nullable: true, select: false })
+  refreshToken?: string | null;
+
   @ManyToMany(() => Role, role => role.users, { eager: true, cascade: true })
   @JoinTable({
     name: 'user_roles',

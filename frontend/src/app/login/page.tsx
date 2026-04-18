@@ -24,7 +24,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
   const router = useRouter();
-  const { setUser } = useAuthStore();
+  const { setTokens } = useAuthStore();
 
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
@@ -55,7 +55,8 @@ export default function LoginPage() {
     setLoading(true);
     try {
       const response = await authService.login({ email, password });
-      setUser(response.data.user, response.data.access_token);
+      const { user, access_token, refresh_token } = response.data;
+      setTokens(user, access_token, refresh_token);
       toast.success('Welcome back! You have been logged in successfully.');
       router.push('/dashboard');
     } catch (error: any) {

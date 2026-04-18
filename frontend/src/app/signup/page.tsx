@@ -29,7 +29,7 @@ export default function SignupPage() {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
   const router = useRouter();
-  const { setUser } = useAuthStore();
+  const { setTokens } = useAuthStore();
 
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
@@ -76,8 +76,9 @@ export default function SignupPage() {
     setLoading(true);
     try {
       const response = await authService.signup({ name, email, password, mobile });
-      setUser(response.data.user, response.data.access_token);
-      toast.success('Account created successfully! Welcome to TaskManager.');
+      const { user, access_token, refresh_token } = response.data;
+      setTokens(user, access_token, refresh_token);
+      toast.success('Account created! Welcome to TaskFlow.');
       router.push('/dashboard');
     } catch (error: any) {
       const message = error.response?.data?.message;

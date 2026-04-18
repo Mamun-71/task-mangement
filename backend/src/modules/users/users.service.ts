@@ -3,7 +3,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, In } from 'typeorm';
 import { User } from './entities/user.entity';
 import { Role } from '../roles/entities/role.entity';
-import * as bcrypt from 'bcryptjs';
 
 @Injectable()
 export class UsersService {
@@ -14,17 +13,25 @@ export class UsersService {
     private rolesRepository: Repository<Role>,
   ) {}
 
-  async findAll() {
+  findAll() {
     return this.usersRepository.find({ relations: ['roles'] });
   }
 
   async findOne(id: number) {
-    const user = await this.usersRepository.findOne({ where: { id }, relations: ['roles'] });
+    const user = await this.usersRepository.findOne({
+      where: { id },
+      relations: ['roles', 'roles.permissions'],
+    });
     if (!user) throw new NotFoundException('User not found');
     return user;
   }
 
-  // Create user handled by Auth module mostly, but you can add admin-create functionality here
+  async update(id: number, data: { name?: string; email?: string }) {
+    const user = await this.findOne(id);
+    if (data.name) user.name = data.name;
+    if (data.email) user.email = data.email;
+    return this.usersRepository.save(user);
+  }
 
   async assignRoles(userId: number, roleIds: number[]) {
     const user = await this.findOne(userId);

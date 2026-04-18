@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Read(//c/Users/USER/.claude/projects/c--Users-USER-Desktop-NestJs-task-mangement/**)",
+      "Read(//c/Users/USER/.claude/projects/c--Users-USER-Desktop-NestJs-task-mangement/memory/**)",
+      "Bash(npm run *)",
+      "Bash(npx tsc *)"
+    ]
+  }
+}

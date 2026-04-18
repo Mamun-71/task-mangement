@@ -3,6 +3,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { CustomExceptionFilter } from './exception/custom-exception.filter';
+import { TransformInterceptor } from './common/interceptors/transform.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -51,7 +52,10 @@ async function bootstrap() {
       }),
   );
 
-  // ✅ Global Error Handling (from bdlaws architectural pattern)
+  // ✅ Standardise all success responses: { success, status_code, data, timestamp }
+  app.useGlobalInterceptors(new TransformInterceptor());
+
+  // ✅ Global Error Handling
   app.useGlobalFilters(new CustomExceptionFilter());
 
   // ✅ Swagger setup
@@ -65,7 +69,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, document);
 
-  // ✅ Start server
+  // ✅ Start server — reads PORT from .env (default 3003)
   const port = process.env.PORT ?? 3003;
   await app.listen(port);
 

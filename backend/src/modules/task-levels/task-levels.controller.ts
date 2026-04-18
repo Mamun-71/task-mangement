@@ -1,47 +1,66 @@
-import { Controller, Get, Post, Body, Param, Patch, Delete, ParseIntPipe, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Patch,
+  Delete,
+  ParseIntPipe,
+  UseGuards,
+} from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
 import { TaskLevelsService } from './task-levels.service';
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
-import { RolesGuard } from '../../common/guards/roles.guard';
-import { Roles } from '../../common/decorators/roles.decorator';
+import { CurrentUser } from '../../common/decorators/current-user.decorator';
+import { User } from '../users/entities/user.entity';
 
 @ApiTags('TaskLevels')
 @ApiBearerAuth()
-@UseGuards(JwtAuthGuard, RolesGuard)
+@UseGuards(JwtAuthGuard)
 @Controller('task-levels')
 export class TaskLevelsController {
-  constructor(private readonly taskLevelsService: TaskLevelsService) {}
+  constructor(private readonly svc: TaskLevelsService) {}
 
   @Post()
-  @Roles('ADMIN')
-  @ApiOperation({ summary: 'Create a task level (ADMIN only)' })
-  create(@Body('title') title: string) {
-    return this.taskLevelsService.create(title);
+  @ApiOperation({ summary: 'Create a task level (any authenticated user)' })
+  create(
+    @CurrentUser() user: User,
+    @Body('title') title: string,
+    @Body('timeMultiplier') timeMultiplier?: number,
+  ) {
+    return this.svc.create(user.id, title, timeMultiplier);
   }
 
   @Get()
-  @ApiOperation({ summary: 'Get all task levels' })
-  findAll() {
-    return this.taskLevelsService.findAll();
+  @ApiOperation({ summary: 'Get task levels visible to the current user' })
+  findAll(@CurrentUser() user: User) {
+    const isAdmin = user.roles?.some((r) => r.name === 'ADMIN');
+    return this.svc.findAll(user.id, isAdmin);
   }
 
   @Get(':id')
-  @ApiOperation({ summary: 'Get task level by id' })
+  @ApiOperation({ summary: 'Get a task level by id' })
   findOne(@Param('id', ParseIntPipe) id: number) {
-    return this.taskLevelsService.findOne(id);
+    return this.svc.findOne(id);
   }
 
   @Patch(':id')
-  @Roles('ADMIN')
-  @ApiOperation({ summary: 'Update a task level (ADMIN only)' })
-  update(@Param('id', ParseIntPipe) id: number, @Body('title') title: string) {
-    return this.taskLevelsService.update(id, title);
+  @ApiOperation({ summary: 'Update a task level (owner or admin)' })
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @CurrentUser() user: User,
+    @Body('title') title: string,
+    @Body('timeMultiplier') timeMultiplier?: number,
+  ) {
+    const isAdmin = user.roles?.some((r) => r.name === 'ADMIN');
+    return this.svc.update(id, user.id, isAdmin, title, timeMultiplier);
   }
 
   @Delete(':id')
-  @Roles('ADMIN')
-  @ApiOperation({ summary: 'Delete a task level (ADMIN only)' })
-  remove(@Param('id', ParseIntPipe) id: number) {
-    return this.taskLevelsService.remove(id);
+  @ApiOperation({ summary: 'Delete a task level (owner or admin)' })
+  remove(@Param('id', ParseIntPipe) id: number, @CurrentUser() user: User) {
+    const isAdmin = user.roles?.some((r) => r.name === 'ADMIN');
+    return this.svc.remove(id, user.id, isAdmin);
   }
 }
